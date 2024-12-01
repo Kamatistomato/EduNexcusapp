@@ -1,0 +1,318 @@
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: #212121;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #337ab7;
+  }
+  
+  a:hover {
+    color: #23527c;
+  }
+  
+  /* Form Styles */
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  button[type="submit"] {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #23527c;
+  }
+  
+  /* Dashboard Styles */
+  
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .dashboard-item {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: calc(33.33% - 40px);
+  }
+  
+  .dashboard-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-item .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Modal Styles */
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Other Styles */
+  
+  .student-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .student-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .student-list li:last-child {
+    border-bottom: none;
+  }
+/* Form Container */
+.form-container {
+    background: linear-gradient(135deg, #bce9f5, #ffffff); /* Gradient background */
+    padding: 30px;
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 320px; /* Slightly wider */
+    text-align: center;
+    transition: transform 0.3s; /* Add transition for scaling effect */
+}
+  
+  /* Form Group */
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  /* Input Fields */
+  .form-group input {
+    border-radius: 15px; /* More rounded corners */
+    border: 2px solid #ccc; /* Thicker border */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth border color transition */
+}
+  .form-group select {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    border: 2px solid #ccc; /* Thicker border */
+    border-radius: 15px; /* More rounded corners */
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth border color transition */
+  }
+  
+ /* Input Focus Effect */
+.form-group input:focus {
+    border-color: #0b002b; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(11, 2, 32, 0.5); /* Add shadow on focus */
+}
+  
+ /* Form Header */
+.form-header {
+    margin-bottom: 10px;
+    font-size: 24px; /* Larger font size for header */
+    font-weight: bold;
+    color: #0b002b; /* Darker text color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+/* Button Styles */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #0b002b; /* Dark background color */
+    color: #ffffff;
+    font-size: 16px; /* Slightly larger font size */
+    font-weight: bold;
+    border: none;
+    border-radius: 25px; /* More rounded button */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Add transform and shadow effects */
+    position: relative;
+    overflow: hidden; /* To contain the pseudo-element */
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    z-index: 0; /* Behind the text */
+}
+
+.btn:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn:hover {
+    background-color: #3b3b3b; /* Darker background on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.btn:active {
+    transform: translateY(1px); /* Button press effect */
+    box-shadow: none; /* Remove shadow when pressed */
+    transition: none; /* Disable transition on active */
+}
+  /* Message Styles */
+  .message {
+    margin: 10px 0;
+    color: #d32f2f;
+    font-size: 14px; /* Slightly larger font size */
+    font-weight: bold;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 400px) {
+    .form-container {
+      width: 90%; /* Full width on small screens */
+    }
+  }
+  .message {
+    margin: 10px 0;
+    color: #d32f2f;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .form {
+    display: none;
+  }
+  .form.active {
+    display: block;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(11, 2, 32, 0.4);
+    padding-top: 60px;
+  }
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #calendar {
+    margin-top: 20px;
+  }

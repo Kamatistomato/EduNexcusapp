@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduNexcus</title>
+  
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <div id="message" class="message"></div>
+    <img src="C:\Users\ACER\EduNexcus\Logo Sa EduTrack 3-01.png" alt="Logo" style="width: 50px; height: auto; margin-bottom: 0px;">
+    
+    <!-- Sign-Up Form -->
+    <form id="signup-form" class="form active" aria-labelledby="signup-header">
+      <div class="form-header" id="signup-header"><h2><b>EduNexus</b></h2><br>Create Account</br></div> 
+      <div class="form-group">
+        <label for="signup-name">Name</label>
+        <input type="text" id="signup-name" name="name" placeholder="Enter your name" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="signup-username">Username</label>
+        <input type="text" id="signup-username" name="username" placeholder="Enter your username" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" name="email" placeholder="Enter your email" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" name="password" placeholder="6+ characters" required aria-required="true">
+      </div>
+      <div class="form-group" style="display: flex; align-items: center;">
+        <input type="checkbox" id="signup-terms" name="terms" required aria-required="true">
+        <label for="signup-terms">I agree to the Terms and Conditions</label>
+      </div>
+      <button type="button" id="signup-button" class="btn">Create Account</button>
+      <div class="form-footer">
+        Already have an account? <a href="#" id="show-signin">Sign In</a>
+      </div>
+    </form>
+
+    <!-- Sign-In Form -->
+    <form id="signin-form" class="form" aria-labelledby="signin-header">
+      <div class="form-header" id="signin-header">Sign In</div>
+      <div class="form-group">
+        <label for="signin-email">Email</label>
+        <input type="email" id="signin-email" name="email" placeholder="Enter your email" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="signin-password">Password</label>
+        <input type="password" id="signin-password" name="password" placeholder="Enter your password" required aria-required="true">
+      </div>
+      <button type="button" id="signin-button" class="btn">Sign In</button>
+      <div class="form-footer">
+        Don't have an account? <a href="#" id="show-signup">Sign Up</a>
+      </div>
+    </form>
+
+    <!-- Role Selection UI -->
+    <div id="role-selection" class="form" aria-labelledby="role-selection-header">
+      <div class="form-header" id="role-selection-header">Select Your Role</div>
+      <div class="form-group">
+        <button id="role-teacher" class="btn">Teacher</button>
+      </div>
+      <div class="form-group">
+        <button id="role-student" class="btn">Student</button>
+      </div>
+      <div class ="form-group">
+        <button id="role-parent" class="btn">Parent</button>
+      </div>
+    </div>
+
+    <!-- Teacher Dashboard -->
+    <div id="teacher-dashboard" class="form" aria-labelledby="teacher-dashboard-header">
+      <h1 id="teacher-dashboard-header">Welcome, <span id="teacher-display-name"></span>!</h1>
+      <div class="form-group">
+        <button id="view-students" class="btn">View Students</button>
+      </div>
+      <div class="form-group">
+        <button id="add-students" class="btn">Add New Set of Students</button>
+      </div>
+      <div id="upload-student-file" class="form-group" style="display: none;">
+        <label for="student-file">Upload Student Excel File</label>
+        <input type="file" id="student-file" aria-label="Upload student file">
+        <button id="save-student-file" class="btn">Save File</button>
+      </div>
+      <div id="view-student-list" class="form-group" style="display: none;">
+        <h4>Student List</h4>
+        <table id="student-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Grades</th>
+              <th>Balance</th>
+              <th>Lacking Output</th>
+            </tr>
+          </thead>
+          <tbody id="student-list"></tbody>
+        </table>
+      </div>
+      <button id="logout-button" class="btn">Logout</button>
+    </div>
+
+    <!-- Student Dashboard -->
+    <div id="student-dashboard" class="form" aria-labelledby="student-dashboard-header">
+      <div class="form-header" id="student-dashboard-header">Student Dashboard</div>
+      <div class="form-group">
+        <label for="teacher-name">Teacher's Name</label>
+        <input type="text" id="teacher-name" placeholder="Enter Teacher's Name" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="class-password">Class Password</label>
+        <input type="password" id="class-password" placeholder="Enter Class Password" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <button id="view-grades" class="btn">View My Grades</button>
+      </div>
+      <div class="form-group">
+        <button id="payment-tracking" class="btn">Payment & Expense Tracking</button>
+      </div>
+      <div class="form-group">
+        <button id="deadline-calendar" class="btn">Deadline & Task Management</button>
+      </div>
+      <div class="form-group">
+        <button id="progress-dashboard" class="btn">Progress Dashboard</button>
+      </div>
+    </div>
+
+    <!-- Parent Dashboard -->
+    <div id="parent-dashboard" class="form" aria-labelledby="parent-dashboard-header">
+      <div class="form-header" id="parent-dashboard-header">Parent Dashboard</div>
+      <div class="form-group">
+        <label for="child-search">Search for Your Child</label>
+        <input type="text" id="child-search" placeholder="Enter child's name" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="child-passcode">Enter Child's Passcode</label>
+        <input type="password" id="child-passcode" placeholder="Enter passcode" required aria-required="true">
+      </div>
+      <div class="form-group">
+        <button id="view-grade" class="btn">View Grade</button>
+      </div>
+      <div id="child-grade" class="form-group" style="display: none;">
+        <h4>Child's Information</h4>
+        <p><strong>Grade: </strong><span id="grade-display"></span></p>
+        <p><strong>Missing Outputs: </strong><span id="missing-outputs-display"></span></p>
+        <p><strong>Pending Balance: </strong><span id="pending-balance-display"></span></p>
+      </div>
+    </div>
+
+    <!-- Modal for Payment and Expense Tracking -->
+    <div id="payment-modal" class="modal" aria-labelledby="payment-modal-header">
+      <div class="modal-content">
+        <span class="close" id="close-payment-modal">&times;</span>
+        <h2 id="payment-modal-header">Payment & Expense Tracking</h2>
+        <p>Current Balance: <span id="current-balance">0</span></p>
+        <button class="btn" id ="confirm-payment">Confirm Payment</button>
+      </div>
+    </div>
+
+    <!-- Modal for Deadline & Task Management -->
+    <div id="calendar-modal" class="modal" aria-labelledby="calendar-modal-header">
+      <div class="modal-content">
+        <span class="close" id="close-calendar-modal">&times;</span>
+        <h2 id="calendar-modal-header">Deadline & Task Management</h2>
+        <div id="calendar"></div>
+      </div>
+    </div>
+
+    <!-- Modal for Progress Dashboard -->
+    <div id="progress-modal" class="modal" aria-labelledby="progress-modal-header">
+      <div class="modal-content">
+        <span class="close" id="close-progress-modal">&times;</span>
+        <h2 id="progress-modal-header">Progress Dashboard</h2>
+        <p>View your academic progress here.</p>
+        <button class="btn" id="view-progress">View Progress</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="Scrit.js.js"></script>
+</body>
+</html>
